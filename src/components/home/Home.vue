@@ -21,8 +21,8 @@ export default {
     components: {PageTitle,Pacient,PacientbyId},
     data: function() {
         return {
-            countMedico = 0,
-            countPacient = 0,
+            countMedico: 0,
+            countPacient: 0,
             pacient: {},
             medico: {}
         }

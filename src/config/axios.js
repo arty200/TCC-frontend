@@ -3,7 +3,7 @@ import axios from 'axios'
 const success = res => res
 const error = err => {
     if (401 === err.response.status) {
-        window.location = '/auth'
+        window.location = '/signin'
     }else {
         return Promise.reject(err)
     }

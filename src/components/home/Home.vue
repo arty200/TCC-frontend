@@ -2,8 +2,8 @@
     <div>
         <PageTitle icon="fa fa-home" main="Dashboard" sub="Cadastro de pacientes" />
         <div class="pacient">
-            <Pacient title="Pacientes" :value="pacient[0].count" icon="fa fa-user" color="#3282cd" />
-            <Pacient title="Medicos" :value="medico[0].count" icon="fa fa-user-md" color="#d54d50" />
+            <Pacient title="Pacientes" :value="countPacient" icon="fa fa-user" color="#3282cd" />
+            <Pacient title="Medicos" :value="countMedico" icon="fa fa-user-md" color="#d54d50" />
         </div>
         <PacientbyId />
     </div>
@@ -21,6 +21,8 @@ export default {
     components: {PageTitle,Pacient,PacientbyId},
     data: function() {
         return {
+            countMedico = 0,
+            countPacient = 0,
             pacient: {},
             medico: {}
         }
@@ -29,10 +31,17 @@ export default {
         getPacient() {
             axios.patch(`${baseApiUrl}/users`).then(res => {this.medico = res.data})
             axios.patch(`${baseApiUrl}/pacientes`).then(res => {this.pacient = res.data})
+        },
+        pickValues() {
+            if(medico != undefined && pacient != undefined){
+                countMedico = this.medico[0].count
+                countPacient = this.pacient[0].count
+            }
         }
     },
     mounted() {
         this.getPacient()
+        this.pickValues()
     }
 }
 </script>

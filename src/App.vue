@@ -31,8 +31,9 @@ export default {
 			this.validatingToken = true
 
 			const json = localStorage.getItem(userKey)
-			if(!JSON.parse(json)){
-				console.log('NAO PODE CAIR AQUI')
+			console.log(json)
+			if(!json){
+				console.log('NAO PODE CAIR AQUI' + json)
 				const userData = JSON.parse(json)
 				this.$store.commit('setUser',null)
 			}else {

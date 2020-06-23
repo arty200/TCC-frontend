@@ -33,7 +33,7 @@ export default {
             axios.patch(`${baseApiUrl}/pacientes`).then(res => {this.pacient = res.data})
         },
         pickValues() {
-            if(this.medico != undefined && this.pacient != undefined){
+            if(this.medico !== undefined && this.pacient !== undefined){
                 countMedico = this.medico[0].count
                 countPacient = this.pacient[0].count
             }

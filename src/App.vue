@@ -30,7 +30,7 @@ export default {
 		async validateToken() {
 			this.validatingToken = true
 
-			const json = localStorage.getItem(userKey)
+			const json = sessionStorage.getItem(userKey)
 			const userData = JSON.parse(json)
 			this.$store.commit('setUser',null)
 			console.log(userData)
@@ -46,7 +46,7 @@ export default {
 			if(res.data) {
 				this.$store.commit('setUser',userData)
 			} else {
-				localStorage.removeItem(userKey)
+				sessionStorage.removeItem(userKey)
 				this.$router.push({name:'auth'})
 			}
 			this.validatingToken = false
